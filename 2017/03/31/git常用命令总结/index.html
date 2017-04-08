@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/4 | 咸鱼老弟</title>
+  <title>git常用命令总结 | 咸鱼老弟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="咸鱼老弟">
-<meta property="og:url" content="http://yoursite.com/archives/2017/04/index.html">
+  <meta name="description" content="平时要用一些命令老是去网上找还挺麻烦的，所以总结起来，方便以后自己的查阅">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用命令总结">
+<meta property="og:url" content="http://yoursite.com/2017/03/31/git常用命令总结/index.html">
 <meta property="og:site_name" content="咸鱼老弟">
+<meta property="og:description" content="平时要用一些命令老是去网上找还挺麻烦的，所以总结起来，方便以后自己的查阅">
+<meta property="og:updated_time" content="2017-04-08T16:09:29.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="咸鱼老弟">
+<meta name="twitter:title" content="git常用命令总结">
+<meta name="twitter:description" content="平时要用一些命令老是去网上找还挺麻烦的，所以总结起来，方便以后自己的查阅">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼老弟" type="application/atom+xml">
   
@@ -154,65 +159,267 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-git常用命令总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/08/hexo+github搭建自己的博客/" class="archive-article-date">
-  	<time datetime="2017-04-08T07:08:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/08/hexo+github搭建自己的博客/">hexo+github搭建自己的博客</a>
+    <h1 class="article-title" itemprop="name">
+      git常用命令总结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/31/git常用命令总结/" class="archive-article-date">
+  	<time datetime="2017-03-31T07:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>平时要用一些命令老是去网上找还挺麻烦的，所以总结起来，方便以后自己的查阅</p>
+<a id="more"></a>
+<h3 id="正常的开发流程命令"><a href="#正常的开发流程命令" class="headerlink" title="正常的开发流程命令"></a>正常的开发流程命令</h3><ol>
+<li><p>首先进入项目的主分支</p>
+</li>
+<li><p>Fork一份工程，当做自己的项目管理分支<br>&ensp;&ensp;&ensp;Fork的作用:<br>&ensp;&ensp;&ensp;相当于你在原项目的主分支上又建立了一个分支，你可以在该分支上任意修改，如果想将你的修改合并到原项目中时，可以pull request，这样原项目的作者就可以将你修改的东西合并到原项目的主分支上去，这样你就为开源项目贡献了代码，开源项目就会在大家共同的努力下不断壮大和完善。</p>
+</li>
+<li><p>在电脑上创建一个文件夹，先Clone一份自己工程的项目分支(xxx屏蔽公司信息)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Git clone git@xxxx.gitlab.com:xxxxxx/SELand_Vertu</div></pre></td></tr></table></figure>
+</li>
+<li><p>进入项目的二级目录进入git客户端，确认要pull分支<br>   <code>git branch</code>                看看当前的分支<br>   <code>git checkout -b develop</code>    切换到develop分支，因为我要pull拉去develop分支上的项目</p>
+</li>
+</ol>
+<ol>
+<li><p>然后在将自己的项目分支同步项目主分支（我们项目分支为develop分支） </p>
+<p><code>git pull git@xxx.gitlab.com:xxx/SELand_Vertu develop</code></p>
+</li>
+<li><p>每次提交代码时候，需要先同步项目主分支代码</p>
+</li>
+</ol>
+<ul>
+<li><code>git status</code>               是哪些文件有所修改</li>
+<li><code>git diff</code>                 可以查询所修改的代码</li>
+<li><code>git add -A</code>              增加自己所做的修改</li>
+<li><code>git commit -a</code>            提交所有修改的代码 ，加注释是这样  <code>git commit -a -m &quot;这里是注释的内容&quot;</code></li>
+<li><code>git push origin develop</code>  提交代码,这里的提交只是提交到了项目的develop分支上面，还没提交到master上面</li>
+</ul>
+<h3 id="若代码有冲突，可以这样解决"><a href="#若代码有冲突，可以这样解决" class="headerlink" title="若代码有冲突，可以这样解决"></a>若代码有冲突，可以这样解决</h3><ol>
+<li><code>git pull git@xxx.gitlab.com:xxx/SELand_Vertu develop</code>     先同步一下会出现以上的错误</li>
+<li>pull会使用git merge导致冲突，需要将冲突的文件resolve掉   <code>git add -u</code>,</li>
+<li>在项目中看看哪些代码是对方改的，哪些代码是自己修改的，在合并成一份最新的代码</li>
+<li><code>git commit</code> 之后才能成功<h2 id="添加修改"><a href="#添加修改" class="headerlink" title="添加修改"></a>添加修改</h2></li>
+<li>添加文件到暂缓区：</li>
+</ol>
+<ul>
+<li><code>git add -A .</code>一次添加所有改变的文件</li>
+<li><code>git add xx</code>将xx文件添加到暂存区</li>
+<li><code>git add .</code> 添加新文件和编辑过的文件不包括删除的文件</li>
+<li><code>git add -u</code> 添加编辑或者删除的文件，不包括新添加的文件。</li>
+</ul>
+<ol>
+<li>commit文件</li>
+</ol>
+<ul>
+<li><code>git commit -m &quot;这里是注释&quot;</code> 提交的是暂存区里面的内容，也就是 Changes to be committed 中的文件。</li>
+<li><code>git commit -a -m &quot;这里是注释&quot;</code> 除了将暂存区里的文件提交外，还提交 Changes bu not updated 中的文件。</li>
+<li><code>git commit --amend</code>有时候我们会发现有几个文件漏了提交或者想修改一下提交信息，又或者忘记使用 -a 选项导致一些文件没有被提交，我们希望对上一次提交进行修改，或者说取消上一次提交，这时候我们需要使用 –amend 选项。</li>
+<li><code>git commit --amend -a</code>用来当我们发现在提交时忘记使用 -a 选项，导致 Changes bu not updated 中的内容没有被提交<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2></li>
+</ul>
+<h3 id="1-撤销commit"><a href="#1-撤销commit" class="headerlink" title="1.撤销commit"></a>1.撤销commit</h3><p>方法1:<br>&ensp;&ensp;执行<code>git log</code>查看 commit日志，然后<code>git reset --hard commit_id</code>commit_id是控制台上的hash值<br>方法2:<br>&ensp;&ensp;<code>git reset  –hard HEAD^</code>,如果是上上一个版本<code>git reset  –hard HEAD^^</code>,如果是上一百个版本<code>git reset  –hard HEAD~100</code>;<br>方法3:<br>&ensp;&ensp;<code>git checkout  —-文件名</code> 撤销对某个文件的修改,例：<code>git checkout  —-readme.txt</code>；<br>&ensp;&ensp;<code>git checkout -- .</code>撤销对所有文件的修改</p>
+<p>！！注意： 撤销之后，由于本地版本低于线上版本，想要提交代码，只能强行提交，覆盖线上，可以使用下面的命令：<code>git push -f origin 分支名</code></p>
+<h3 id="2-恢复到某一版本"><a href="#2-恢复到某一版本" class="headerlink" title="2.恢复到某一版本"></a>2.恢复到某一版本</h3><p>现在我又发觉我最新的版本是没错的，我不想撤销了，我要回到最新版本，两步:<br><code>git reflog</code>查看历史版本；<code>git reset  –hard 版本号</code></p>
+<h3 id="3-撤销add"><a href="#3-撤销add" class="headerlink" title="3.撤销add"></a>3.撤销add</h3><p>&ensp;&ensp;<code>git reset head &lt;文件名&gt;</code>   撤销对某个文件的add命令<br>&ensp;&ensp;<code>git reset head .</code>  撤销所有文件的add命令</p>
+<h2 id="创建与合并分支命令如下："><a href="#创建与合并分支命令如下：" class="headerlink" title="创建与合并分支命令如下："></a>创建与合并分支命令如下：</h2><ul>
+<li>查看分支：<code>git branch</code></li>
+<li>创建分支：<code>git branch name</code></li>
+<li>切换分支：<code>git checkout name</code></li>
+<li>创建+切换分支：<code>git checkout –b name</code></li>
+<li>合并某分支到当前分支：<code>git merge name</code></li>
+<li>删除分支：<code>git branch –d name</code></li>
+</ul>
+<h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><ul>
+<li>创建一个空目录 XX指目录名<code>mkdir XX</code></li>
+<li>显示当前目录的路径<code>pwd</code></li>
+<li>把当前的目录变成可以管理的git仓库，生成隐藏.git文件<code>git init</code></li>
+<li>把xx文件添加到暂存区去<code>git add XX</code></li>
+<li>提交文件 –m 后面的是注释<code>git commit –m &quot;XX&quot;</code></li>
+<li>查看仓库状态 <code>git status</code></li>
+<li>查看XX文件修改了那些内容 <code>git diff XX</code></li>
+<li>查看历史记录 <code>git log</code></li>
+<li>回退到上一个版本 <code>git reset  –hard HEAD^</code> 或者 <code>git reset  –hard HEAD~</code><br>如果想回退到100个版本，使用<code>git reset –hard HEAD~100</code></li>
+<li>查看XX文件内容 <code>cat XX</code></li>
+<li>查看历史记录的版本号id <code>git reflog</code></li>
+<li>把XX文件在工作区的修改全部撤销 <code>git checkout --XX</code></li>
+<li>删除XX文件 <code>git rm XX</code></li>
+<li>关联一个远程库 <code>git remote add origin https://github.com/xx</code></li>
+<li>把当前master分支推送到远程库 <code>git push –u(第一次要用-u 以后不需要) origin master</code></li>
+<li>从远程库中克隆 <code>git clone https://github.com/xx</code></li>
+<li>创建dev分支 并切换到dev分支上 <code>git checkout –b dev</code></li>
+<li>查看当前所有的分支 <code>git branch</code></li>
+<li>切换回master分支 <code>git checkout master</code></li>
+<li>在当前的分支上合并dev分支 <code>git merge dev</code></li>
+<li>删除dev分支 <code>git branch –d dev</code></li>
+<li>创建分支 <code>git branch name</code></li>
+<li>把当前的工作隐藏起来 等以后恢复现场后继续工作 <code>git stash</code></li>
+<li>查看所有被隐藏的文件列表<code>git stash list</code></li>
+<li>恢复被隐藏的文件，但是内容不删除<code>git stash apply</code></li>
+<li>删除被隐藏文件 <code>git stash drop</code></li>
+<li>恢复文件的同时 也删除文件 <code>git stash pop</code></li>
+<li>查看远程库的信息<code>git remote</code></li>
+<li>查看远程库的详细信息 <code>git remote –v</code></li>
+<li>把master分支推送到远程库对应的远程分支上 <code>git push origin master</code> </li>
+<li>把分支推送到远程的分支<code>git push origin develop</code></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>打赏个咖啡钱<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="//images2015.cnblogs.com/blog/776370/201609/776370-20160914124035805-437895007.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/31/git常用命令总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/03/29/使用vue2+vue-router+vuex写一个cnode的脚手架/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用vue2+vue-router+vuex写一个cnode的脚手架
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/03/31/随笔，杂谈/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随笔测试</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
+  
+
+
+
+
+
 
     
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="//v2.uyan.cc/code/uyan.js?uid=2130404"></script>
+</section>
 
+    
 
           </div>
         </div>
@@ -234,8 +441,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
