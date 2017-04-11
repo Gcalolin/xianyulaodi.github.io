@@ -17,7 +17,7 @@
 <meta property="og:description" content="平时要用一些命令老是去网上找还挺麻烦的，所以总结起来，方便以后自己的查阅">
 <meta property="og:image" content="http://tutorialspots.com/wp-content/uploads/2016/10/Another-git-process-seems-to-be-running-in-this-repository.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/630011/201603/630011-20160315120522896-1718649799.jpg">
-<meta property="og:updated_time" content="2017-04-11T15:16:29.603Z">
+<meta property="og:updated_time" content="2017-04-11T15:33:12.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用命令总结">
 <meta name="twitter:description" content="平时要用一些命令老是去网上找还挺麻烦的，所以总结起来，方便以后自己的查阅">
@@ -174,17 +174,10 @@
       
         <p>平时要用一些命令老是去网上找还挺麻烦的，所以总结起来，方便以后自己的查阅</p>
 <a id="more"></a>
-<h2 id="正常的开发流程命令"><a href="#正常的开发流程命令" class="headerlink" title="正常的开发流程命令"></a>正常的开发流程命令</h2><ol>
-<li><p>在电脑上创建一个文件夹，先Clone一份自己工程的项目分支(xxx屏蔽公司信息)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Git clone git@xxxx.gitlab.com:xxxxxx/SELand_Vertu</div></pre></td></tr></table></figure>
-</li>
-<li><p>进入项目目录，创建分支<br>   <code>git branch</code>                看看当前的分支<br>   <code>git checkout -b develop</code>    切换到develop分支.</p>
-</li>
-<li><p>在自己的分支上进行代码的修改，修改好后，可以提交到远程分支上,提交方法看步骤4</p>
-</li>
-<li><p>每次提交代码时候，需要先同步项目主分支代码</p>
-</li>
-</ol>
+<h2 id="正常的开发流程命令"><a href="#正常的开发流程命令" class="headerlink" title="正常的开发流程命令"></a>正常的开发流程命令</h2><p>1.在电脑上创建一个文件夹，先Clone一份自己工程的项目分支(xxx屏蔽公司信息)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Git clone git@xxxx.gitlab.com:xxxxxx/SELand_Vertu</div></pre></td></tr></table></figure></p>
+<p>2.进入项目目录，创建分支<br>      <code>git branch</code>                看看当前的分支<br>      <code>git checkout -b develop</code>    切换到develop分支.</p>
+<p>3.在自己的分支上进行代码的修改，修改好后，可以提交到远程分支上,提交方法看步骤4</p>
+<p>4.每次提交代码时候，需要先同步项目主分支代码</p>
 <ul>
 <li><code>git status</code>               是哪些文件有所修改</li>
 <li><code>git diff</code>                 可以查询所修改的代码(<code>git diff 文件名</code>可以查看指定文件修改的内容)</li>
@@ -192,14 +185,9 @@
 <li><code>git commit -a -m &quot;这里是注释的内容&quot;</code>    提交所有修改的代码到当前分支上</li>
 <li><code>git push origin develop</code>  提交代码,这里的提交只是提交到了项目的develop分支上面，还没提交到master上面</li>
 </ul>
-<ol>
-<li><p>发布测试的时候可能用的是分支的代码，测试完了，没问题，要上线了，这时候需要将代码merge到主分支上</p>
-</li>
-<li><p>首先需要切换到主分支master上<code>git checkout master</code>,然后合并分支<code>git merge name</code>这里的name为分支名字。</p>
-</li>
-<li><p>删除分支<code>git branch -d name</code>,然后推送到远程master <code>git push origin master</code>;</p>
-</li>
-</ol>
+<p>5.发布测试的时候可能用的是分支的代码，测试完了，没问题，要上线了，这时候需要将代码merge到主分支上</p>
+<p>6.首先需要切换到主分支master上<code>git checkout master</code>,然后合并分支<code>git merge name</code>这里的name为分支名字。</p>
+<p>7.删除分支<code>git branch -d name</code>,然后推送到远程master <code>git push origin master</code>;</p>
 <ul>
 <li>有时候可能会是在别人的分支上进行代码的修改，此时，步骤3之后插多一个步骤：<br>将自己的项目分支同步项目主分支（我们项目分支为develop分支） <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull git@xxx.gitlab.com:xxx/SELand_Vertu develop</div></pre></td></tr></table></figure>
 </li>
@@ -546,6 +534,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -555,14 +551,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
             
             <div class="clearfix"></div>
