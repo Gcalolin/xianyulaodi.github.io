@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xianyulaodi.github.io">
-  <title>Tag: vue | 咸鱼老弟</title>
+  <title>nodejs之path模块 | 咸鱼老弟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="咸鱼老弟">
-<meta property="og:url" content="https://xianyulaodi.github.io/tags/vue/index.html">
+  <meta name="description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。">
+<meta name="keywords" content="path,node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs之path模块">
+<meta property="og:url" content="https://xianyulaodi.github.io/2017/05/07/nodejs之path模块/index.html">
 <meta property="og:site_name" content="咸鱼老弟">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。">
+<meta property="og:updated_time" content="2017-05-09T15:21:16.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="咸鱼老弟">
+<meta name="twitter:title" content="nodejs之path模块">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼老弟" type="application/atom+xml">
   
@@ -144,80 +149,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-nodejs之path模块" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/29/使用vue2+vue-router+vuex写一个cnode的脚手架/" class="archive-article-date">
-  	<time datetime="2017-03-29T12:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/使用vue2+vue-router+vuex写一个cnode的脚手架/">使用vue2+vue-router+vuex写一个cnode的脚手架</a>
+    <h1 class="article-title" itemprop="name">
+      nodejs之path模块
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/07/nodejs之path模块/" class="archive-article-date">
+  	<time datetime="2017-05-07T10:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&ensp;&ensp;&ensp;&ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。</p>
+<a id="more"></a>
+<p>参考：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/chyingp/p/node-learning-guide-path.html" target="_blank" rel="external">http://www.cnblogs.com/chyingp/p/node-learning-guide-path.html</a></li>
+<li><a href="http://www.cnblogs.com/52cik/p/learn-node-path.html" target="_blank" rel="external">http://www.cnblogs.com/52cik/p/learn-node-path.html</a></li>
+<li><a href="http://www.css88.com/archives/4497" target="_blank" rel="external">http://www.css88.com/archives/4497</a></li>
+<li><a href="http://www.jianshu.com/p/fe41ee02efc8" target="_blank" rel="external">http://www.jianshu.com/p/fe41ee02efc8</a></li>
+</ul>
+<h3 id="格式化路径-path-normalize-p"><a href="#格式化路径-path-normalize-p" class="headerlink" title="格式化路径 path.normalize(p);"></a>格式化路径 path.normalize(p);</h3><p>作用：将不符合规范的路径格式化，简化开发人员中处理各种复杂的路径判断<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line">path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>);</div><div class="line"> <span class="comment">//==&gt;  '/foo/bar/baz/asdf'</span></div></pre></td></tr></table></figure></p>
+<h3 id="路径合并-path-join-path1-path2-…"><a href="#路径合并-path-join-path1-path2-…" class="headerlink" title="路径合并 path.join([path1], [path2], […]);"></a>路径合并 path.join([path1], [path2], […]);</h3><p>作用：将所有名称用path.seq串联起来，然后用normailze格式化，规范化的路径字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.join(<span class="string">'///foo'</span>, <span class="string">'bar'</span>, <span class="string">'//baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'..'</span>);</div><div class="line"><span class="comment">//==&gt;  '/foo/bar/baz/asdf'</span></div></pre></td></tr></table></figure></p>
+<h3 id="绝对路径-path-resolve-from-…-to"><a href="#绝对路径-path-resolve-from-…-to" class="headerlink" title="绝对路径 path.resolve([from …], to);"></a>绝对路径 path.resolve([from …], to);</h3><p>作用：相当于不断的调用系统的cd命令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">path.resolve(<span class="string">'foo/bar'</span>, <span class="string">'/tmp/file/'</span>, <span class="string">'..'</span>, <span class="string">'a/../subfile'</span>)</div><div class="line"><span class="comment">//相当于：</span></div><div class="line"><span class="comment">// cd foo/bar</span></div><div class="line"><span class="comment">// cd /tmp/file/</span></div><div class="line"><span class="comment">// cd ..</span></div><div class="line"><span class="comment">// cd a/../subfile</span></div><div class="line"><span class="comment">// pwd</span></div></pre></td></tr></table></figure></p>
+<h3 id="相对路径-path-relative-from-to"><a href="#相对路径-path-relative-from-to" class="headerlink" title="相对路径 path.relative(from, to);"></a>相对路径 path.relative(from, to);</h3><p>作用： 返回某个路径下相对于另一个路径的相对位置串.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * from 当前路径，并且方法返回值是基于from指定到to的相对路径</div><div class="line"> * to   到哪路径，</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> <span class="keyword">from</span> = <span class="string">'c:\\from\\a\\'</span>,</div><div class="line">    to = <span class="string">'c:/test/b'</span>;</div><div class="line"><span class="keyword">var</span> _path = path.relative(<span class="keyword">from</span>, to);</div><div class="line"><span class="built_in">console</span>.log(_path); <span class="comment">//..\..\test\b; 表示从from到to的相对路径</span></div></pre></td></tr></table></figure></p>
+<h2 id="文件路径-path-dirname"><a href="#文件路径-path-dirname" class="headerlink" title="文件路径 path.dirname"></a>文件路径 path.dirname</h2><p>作用： 根据一个文件或目录得到它所在的目录路径，这个很常用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myPath = path.dirname(__dirname + <span class="string">'/test/util you.mp3'</span>);</div><div class="line"><span class="built_in">console</span>.log(myPath);   <span class="comment">// E:/doc/test/util you.mp3</span></div></pre></td></tr></table></figure></p>
+<h2 id="文件名称-path-basename-p-ext"><a href="#文件名称-path-basename-p-ext" class="headerlink" title="文件名称 path.basename(p, [ext]);"></a>文件名称 path.basename(p, [ext]);</h2><p>作用： 返回最后一个路径分割后面的文件名，不论是文件还是目录，第二个参数可以忽略文件后缀。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = path.basename(<span class="string">'path/upload/file/123.jpg'</span>);</div><div class="line"><span class="built_in">console</span>.log(str); <span class="comment">// 123.jpg</span></div><div class="line"><span class="keyword">var</span> str = path.basename(<span class="string">'path/upload/file/123.jpg'</span>, <span class="string">'.jpg'</span>);</div><div class="line"><span class="built_in">console</span>.log(str); <span class="comment">// 123</span></div></pre></td></tr></table></figure></p>
+<h2 id="文件扩展名-path-extname-path"><a href="#文件扩展名-path-extname-path" class="headerlink" title="文件扩展名 path.extname(path);"></a>文件扩展名 path.extname(path);</h2><p>作用：返回最后一个 . 之后的字符串，没有则返回空。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = path.extname(<span class="string">'path/file/abc.txt'</span>);</div><div class="line"><span class="built_in">console</span>.log(str); <span class="comment">// '.txt'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> str = path.extname(<span class="string">'path/file/abc.'</span>);</div><div class="line"><span class="built_in">console</span>.log(str); <span class="comment">// '.'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> str = path.extname(<span class="string">'path/upload/file/'</span>);</div><div class="line"><span class="built_in">console</span>.log(str); <span class="comment">// ''</span></div></pre></td></tr></table></figure></p>
+<h2 id="解析路径-path-parse"><a href="#解析路径-path-parse" class="headerlink" title="解析路径 path.parse"></a>解析路径 path.parse</h2><p>作用：把一个路径解析为一个 <code>{root:&#39;&#39;, dir:&#39;&#39;, base:&#39;&#39;, ext:&#39;&#39;, name:&#39;&#39;}</code> 这样的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">path.parse(<span class="string">'/home/user/dir/file.txt'</span>)</div><div class="line"><span class="comment">// returns</span></div><div class="line">&#123;</div><div class="line">    <span class="attr">root</span> : <span class="string">"/"</span>,</div><div class="line">    <span class="attr">dir</span> : <span class="string">"/home/user/dir"</span>,</div><div class="line">    <span class="attr">base</span> : <span class="string">"file.txt"</span>,</div><div class="line">    <span class="attr">ext</span> : <span class="string">".txt"</span>,</div><div class="line">    <span class="attr">name</span> : <span class="string">"file"</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// windows</span></div><div class="line">path.parse(<span class="string">'C:\\path\\dir\\index.html'</span>)</div><div class="line"><span class="comment">// returns</span></div><div class="line">&#123;</div><div class="line">    <span class="attr">root</span> : <span class="string">"C:\\"</span>,</div><div class="line">    <span class="attr">dir</span> : <span class="string">"C:\\path\\dir"</span>,</div><div class="line">    <span class="attr">base</span> : <span class="string">"index.html"</span>,</div><div class="line">    <span class="attr">ext</span> : <span class="string">".html"</span>,</div><div class="line">    <span class="attr">name</span> : <span class="string">"index"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="生成路径-path-format"><a href="#生成路径-path-format" class="headerlink" title="生成路径 path.format"></a>生成路径 path.format</h2><p>作用：跟 <code>path.parse</code> 相反，这个则是根据 <code>{root:&#39;&#39;, dir:&#39;&#39;, base:&#39;&#39;, ext:&#39;&#39;, name:&#39;&#39;}</code> 这样的对象来生成字符串<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">path.format(&#123;</div><div class="line">    <span class="attr">root</span> : <span class="string">"/"</span>,</div><div class="line">    <span class="attr">dir</span> : <span class="string">"/home/user/dir"</span>,</div><div class="line">    <span class="attr">base</span> : <span class="string">"file.txt"</span>,</div><div class="line">    <span class="attr">ext</span> : <span class="string">".txt"</span>,</div><div class="line">    <span class="attr">name</span> : <span class="string">"file"</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// returns</span></div><div class="line"><span class="string">'/home/user/dir/file.txt'</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>打赏个咖啡钱<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="//images2015.cnblogs.com/blog/776370/201609/776370-20160914124035805-437895007.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">path</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vuex</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">vue-router</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/vue/" class="article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://xianyulaodi.github.io/2017/05/07/nodejs之path模块/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/06/mongoose的一些操作命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mongoose的一些操作命令
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
   
+    <div class="duoshuo"></div>
+  
+
+
+
+
+
 
     
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="//v2.uyan.cc/code/uyan.js?uid=2130404"></script>
+</section>
 
+    
 
           </div>
         </div>
@@ -250,9 +365,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

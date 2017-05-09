@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xianyulaodi.github.io/"/>
-  <updated>2017-05-07T10:14:17.057Z</updated>
+  <updated>2017-05-09T15:21:16.403Z</updated>
   <id>https://xianyulaodi.github.io/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nodejs之path模块</title>
+    <link href="https://xianyulaodi.github.io/2017/05/07/nodejs%E4%B9%8Bpath%E6%A8%A1%E5%9D%97/"/>
+    <id>https://xianyulaodi.github.io/2017/05/07/nodejs之path模块/</id>
+    <published>2017-05-07T10:50:00.000Z</published>
+    <updated>2017-05-09T15:21:16.403Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="path" scheme="https://xianyulaodi.github.io/tags/path/"/>
+    
+      <category term="node" scheme="https://xianyulaodi.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>mongoose的一些操作命令</title>
@@ -29,9 +49,9 @@
     </summary>
     
     
-      <category term="mongoose" scheme="https://xianyulaodi.github.io/tags/mongoose/"/>
-    
       <category term="node" scheme="https://xianyulaodi.github.io/tags/node/"/>
+    
+      <category term="mongoose" scheme="https://xianyulaodi.github.io/tags/mongoose/"/>
     
   </entry>
   
