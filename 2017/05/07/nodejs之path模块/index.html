@@ -9,13 +9,13 @@
   <title>nodejs之path模块 | 咸鱼老弟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。">
-<meta name="keywords" content="path,node">
+<meta name="keywords" content="node,path">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs之path模块">
 <meta property="og:url" content="https://xianyulaodi.github.io/2017/05/07/nodejs之path模块/index.html">
 <meta property="og:site_name" content="咸鱼老弟">
 <meta property="og:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。">
-<meta property="og:updated_time" content="2017-05-09T15:21:16.403Z">
+<meta property="og:updated_time" content="2017-05-09T15:25:04.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs之path模块">
 <meta name="twitter:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。">
@@ -171,13 +171,6 @@
       
         <p>&ensp;&ensp;&ensp;&ensp;path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。</p>
 <a id="more"></a>
-<p>参考：</p>
-<ul>
-<li><a href="http://www.cnblogs.com/chyingp/p/node-learning-guide-path.html" target="_blank" rel="external">http://www.cnblogs.com/chyingp/p/node-learning-guide-path.html</a></li>
-<li><a href="http://www.cnblogs.com/52cik/p/learn-node-path.html" target="_blank" rel="external">http://www.cnblogs.com/52cik/p/learn-node-path.html</a></li>
-<li><a href="http://www.css88.com/archives/4497" target="_blank" rel="external">http://www.css88.com/archives/4497</a></li>
-<li><a href="http://www.jianshu.com/p/fe41ee02efc8" target="_blank" rel="external">http://www.jianshu.com/p/fe41ee02efc8</a></li>
-</ul>
 <h3 id="格式化路径-path-normalize-p"><a href="#格式化路径-path-normalize-p" class="headerlink" title="格式化路径 path.normalize(p);"></a>格式化路径 path.normalize(p);</h3><p>作用：将不符合规范的路径格式化，简化开发人员中处理各种复杂的路径判断<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line">path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>);</div><div class="line"> <span class="comment">//==&gt;  '/foo/bar/baz/asdf'</span></div></pre></td></tr></table></figure></p>
 <h3 id="路径合并-path-join-path1-path2-…"><a href="#路径合并-path-join-path1-path2-…" class="headerlink" title="路径合并 path.join([path1], [path2], […]);"></a>路径合并 path.join([path1], [path2], […]);</h3><p>作用：将所有名称用path.seq串联起来，然后用normailze格式化，规范化的路径字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.join(<span class="string">'///foo'</span>, <span class="string">'bar'</span>, <span class="string">'//baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'..'</span>);</div><div class="line"><span class="comment">//==&gt;  '/foo/bar/baz/asdf'</span></div></pre></td></tr></table></figure></p>
 <h3 id="绝对路径-path-resolve-from-…-to"><a href="#绝对路径-path-resolve-from-…-to" class="headerlink" title="绝对路径 path.resolve([from …], to);"></a>绝对路径 path.resolve([from …], to);</h3><p>作用：相当于不断的调用系统的cd命令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">path.resolve(<span class="string">'foo/bar'</span>, <span class="string">'/tmp/file/'</span>, <span class="string">'..'</span>, <span class="string">'a/../subfile'</span>)</div><div class="line"><span class="comment">//相当于：</span></div><div class="line"><span class="comment">// cd foo/bar</span></div><div class="line"><span class="comment">// cd /tmp/file/</span></div><div class="line"><span class="comment">// cd ..</span></div><div class="line"><span class="comment">// cd a/../subfile</span></div><div class="line"><span class="comment">// pwd</span></div></pre></td></tr></table></figure></p>
@@ -226,11 +219,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">path</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">path</a>
         		</li>
       		
 		</ul>
@@ -431,14 +424,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">path</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">博客园迁移</a>
               </li>
              
@@ -447,7 +432,39 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mongoose</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">path</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">setTimeout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Eventloop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,30 +477,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">vue-router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">setTimeout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Eventloop</a>
               </li>
             
             <div class="clearfix"></div>
