@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xianyulaodi.github.io">
-  <title>Tag: js | 咸鱼老弟</title>
+  <title>javascript高阶函数 | 咸鱼老弟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="咸鱼老弟">
-<meta property="og:url" content="https://xianyulaodi.github.io/tags/js/index.html">
+  <meta name="description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;最近在看js设计模式相关的书籍，发觉很多模式都有用到高阶函数这个东东，发觉自己之前没有总结过这类文章，所以来个小小的总结。总结的篇幅有点少，纯属做做笔记">
+<meta name="keywords" content="js,高阶函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript高阶函数">
+<meta property="og:url" content="https://xianyulaodi.github.io/2017/07/03/javascript高阶函数/index.html">
 <meta property="og:site_name" content="咸鱼老弟">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;最近在看js设计模式相关的书籍，发觉很多模式都有用到高阶函数这个东东，发觉自己之前没有总结过这类文章，所以来个小小的总结。总结的篇幅有点少，纯属做做笔记">
+<meta property="og:updated_time" content="2017-07-09T03:51:59.493Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="咸鱼老弟">
+<meta name="twitter:title" content="javascript高阶函数">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;最近在看js设计模式相关的书籍，发觉很多模式都有用到高阶函数这个东东，发觉自己之前没有总结过这类文章，所以来个小小的总结。总结的篇幅有点少，纯属做做笔记">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼老弟" type="application/atom+xml">
   
@@ -144,36 +149,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-javascript高阶函数" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/03/javascript高阶函数/" class="archive-article-date">
-  	<time datetime="2017-07-03T02:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/03/javascript高阶函数/">javascript高阶函数</a>
+    <h1 class="article-title" itemprop="name">
+      javascript高阶函数
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/03/javascript高阶函数/" class="archive-article-date">
+  	<time datetime="2017-07-03T02:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&ensp;&ensp;&ensp;&ensp;最近在看js设计模式相关的书籍，发觉很多模式都有用到高阶函数这个东东，发觉自己之前没有总结过这类文章，所以来个小小的总结。总结的篇幅有点少，纯属做做笔记</p>
+<a id="more"></a>
+<h2 id="1-高阶函数的定义"><a href="#1-高阶函数的定义" class="headerlink" title="1. 高阶函数的定义"></a>1. 高阶函数的定义</h2><p>高阶函数（Higher Order Function）,按照维基百科上面的定义，至少满足下列一个条件的函数：</p>
+<ul>
+<li>1 函数作为参数传入</li>
+<li>2 返回值为一个函数</li>
+</ul>
+<p>只要满足上面两个条件中的其中一个，就属于高阶函数，我们下面用代码来更好的理解一下</p>
+<p><strong> 函数作为参数传入 </strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> fn(a)+fn(b);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fn=<span class="function"><span class="keyword">function</span> (<span class="params">a</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> a*a;</div><div class="line">&#125;</div><div class="line">add(<span class="number">2</span>,<span class="number">3</span>,fn); <span class="comment">//13</span></div></pre></td></tr></table></figure></p>
+<p><strong> 函数作为返回值 </strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ret;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> ret || (ret = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</div><div class="line">    &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="2-函数柯里化"><a href="#2-函数柯里化" class="headerlink" title="2. 函数柯里化"></a>2. 函数柯里化</h2><p>为啥会在这里穿插函数柯里化呢，因为函数柯里化里面包含了很多的高阶函数，所以这里也一并总结总结</p>
+<p><strong> 定义 </strong></p>
+<p>&ensp;&ensp;柯里化（Currying），又称部分求值，一个currying的函数首先会接受一些参数，接受这些参数之后，函数<strong>并不会立即求值</strong>，而是继续返回另一个函数，刚才传入的参数在函数形成的闭包中被保存起来，待到函数被真正需要求值的时候，之前传入的所有参数都会被一次性用于求值。<br>&ensp;&ensp;比如有下面的场景：有个销售需要统计每天的销售额，待到月底的时候再统一计算该月的销售总额。<br>用代码的形式如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currying = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> args = [];</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span>(<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>,args);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="built_in">Array</span>.prototype.push.apply(args,<span class="built_in">arguments</span>);</div><div class="line">          <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> sell = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> sum = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = <span class="built_in">arguments</span>.length; i &lt; len; i++) &#123;</div><div class="line">    sum += <span class="built_in">arguments</span>[i];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> sellAmount = currying(sell);</div><div class="line">sellAmount(<span class="number">100</span>);</div><div class="line">sellAmount(<span class="number">200</span>);</div><div class="line">sellAmount(<span class="number">300</span>);</div><div class="line"><span class="built_in">console</span>.log(sellAmount()); <span class="comment">//600</span></div></pre></td></tr></table></figure></p>
+<p>上面的代码就是函数柯里化的一种形式，我传入了每天的销售额，并不会立即求值，而是等到月底，我需要统计总额的时候才一次性求值</p>
+<h2 id="3-高阶函数实战"><a href="#3-高阶函数实战" class="headerlink" title="3. 高阶函数实战"></a>3. 高阶函数实战</h2><ul>
+<li><p>1.比较常用的一个地方,为一个元素添加事件;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</div><div class="line">      addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</div><div class="line">        elem.addEventListener(type, handler, <span class="literal">false</span>);</div><div class="line">      &#125;</div><div class="line">   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</div><div class="line">      addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</div><div class="line">        elem.attachEvent(<span class="string">'on'</span> + type, handler);</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  addEvent(elem, type, handler);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>2.函数节流<br>比如在window.resize中，不想被频繁的触发事件，想每隔一定的间隔事件来触发</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, interval</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> doing = <span class="literal">false</span>;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (doing) &#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    doing = <span class="literal">true</span>;</div><div class="line">    fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      doing = <span class="literal">false</span>;</div><div class="line">    &#125;, interval);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onresize = throttle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'execute'</span>);</div><div class="line">&#125;, <span class="number">500</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br><br>&ensp;&ensp;&ensp;&ensp;高阶函数在设计模式中用的还是比较多的，也是比较有用的一个东西，所以掌握它是比较有必要性的。<br>最近在看曾探写的《Javascript设计模式与开发实践》，非常不错，值得推荐</p>
+<p>参考资料:《Javascript设计模式与开发实践》</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>打赏个咖啡钱<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="//images2015.cnblogs.com/blog/776370/201609/776370-20160914124035805-437895007.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,59 +242,101 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://xianyulaodi.github.io/2017/07/03/javascript高阶函数/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
+<nav id="article-nav">
+  
+    <a href="/2017/06/18/手写一个router/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          手写一个router
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
+  
+
+
+
+
+
+
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/18/手写一个router/" class="archive-article-date">
-  	<time datetime="2017-06-18T15:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/18/手写一个router/">手写一个router</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">router</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="//v2.uyan.cc/code/uyan.js?uid=2130404"></script>
+</section>
 
     
 
@@ -277,9 +372,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
